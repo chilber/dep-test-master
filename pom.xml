@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>net.neobp.neo.test</groupId>
+  <artifactId>neo-dep-test-master-parent</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>Dependency Test Master</name>
+
+  <properties>
+    <tycho.version>0.15.0</tycho.version>
+    <slf4j.version>1.5.6</slf4j.version>
+    <nms.version>1.0.0-SNAPSHOT</nms.version>
+  </properties>
+
+  <modules>
+    <module>neo-dep-test-master-targetplatform</module>
+    <module>neo-dep-test-master-feature</module>
+    <module>neo-dep-test-master-application</module>
+    <module>neo-dep-test-master-product</module>
+  </modules>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+        <version>${tycho.version}</version>
+        <extensions>true</extensions>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-compiler-plugin</artifactId>
+        <version>${tycho.version}</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <inherited>true</inherited>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+		<version>2.7</version>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>target-platform-configuration</artifactId>
+        <version>${tycho.version}</version>
+        <configuration>
+          <resolver>p2</resolver>
+          <target>
+            <artifact>
+              <groupId>net.neobp.neo.test</groupId>
+              <artifactId>neo-dep-test-master-targetplatform</artifactId>
+              <version>1.0.0-SNAPSHOT</version>
+              <classifier>nms</classifier>
+            </artifact>
+          </target>
+          <ignoreTychoRepositories>false</ignoreTychoRepositories>
+          <environments>
+            <environment>
+              <os>win32</os>
+              <ws>win32</ws>
+              <arch>x86</arch>
+            </environment>
+          </environments>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-packaging-plugin</artifactId>
+        <version>${tycho.version}</version>
+        <configuration>
+          <argLine>-consoleLog</argLine>
+          <testClass>test.AllTests</testClass>
+        </configuration>
+      </plugin>
+      <!-- plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-source-plugin</artifactId>
+        <version>${tycho.version}</version>
+        <executions>
+          <execution>
+            <id>plugin-source</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>plugin-source</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin-->
+      <!-- Is defined in NEO parent, but release plugin complains about a 
+        missing version even if its set in parent! -->
+      <!-- <plugin> <artifactId>maven-clover-plugin</artifactId> <version>2.4</version> 
+        <configuration> <licenseLocation>${user.home}/clover.license</licenseLocation> 
+        <generatePdf>true</generatePdf> <generateXml>true</generateXml> </configuration> 
+        </plugin> -->
+    </plugins>
+  </build>
+</project>

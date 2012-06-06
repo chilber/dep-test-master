@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- @author Rolf Kulemann -->
+<xsd:schema xmlns="http://www.neo-partners.com/schema/nms/navigation"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         targetNamespace="http://www.neo-partners.com/schema/nms/navigation"
+         elementFormDefault="qualified"
+         attributeFormDefault="unqualified">
+
+  <xsd:element name="navigation">
+    <xsd:complexType>
+      <xsd:choice minOccurs="0" maxOccurs="unbounded">
+        <xsd:element name="folder">
+          <xsd:complexType>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+              <xsd:element name="item">
+                <xsd:complexType>
+                  <xsd:attribute name="labelKey" use="required" type="xsd:string" />
+                  <xsd:attribute name="perspectiveId" use="required" type="xsd:string" />
+                  <xsd:attribute name="scenarioIds" use="optional" type="xsd:string" />
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:choice>
+            <xsd:attribute name="id" type="xsd:ID" use="optional"/>
+            <xsd:attribute name="labelKey" use="required" type="xsd:string" />
+            <xsd:attribute name="imageKey" use="required" type="xsd:string" />
+            <xsd:attribute name="scenarioIds" use="optional" type="xsd:string" />
+          </xsd:complexType>
+        </xsd:element>  
+      </xsd:choice>
+      <xsd:attribute name="id" type="xsd:ID" use="required" />
+      <xsd:attribute name="listener" use="optional" type="xsd:string" />
+      <xsd:attribute name="linkController" use="optional" type="xsd:string" />
+      <xsd:attribute name="initialPerspectiveId" use="optional" type="xsd:string" />
+    </xsd:complexType>
+  </xsd:element>
+    
+</xsd:schema>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         id="nmsapplication"
+         name="NMS"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            cardinality="singleton-global"
+            thread="main"
+            visible="true">
+         <run
+               class="net.neobp.neo.nms.product.application.Application">
+         </run>
+      </application>
+   </extension>
+    <extension
+          id="neoMobileSuite"
+          point="org.eclipse.core.runtime.products">
+       <product
+             application="net.neobp.neo.nms.sup.windows.product.nmsapplication"
+             name="NMS Application">
+          <property
+                name="appName"
+                value="NMS Application">
+          </property>
+          <property
+                name="preferenceCustomization"
+                value="plugin_customization.ini">
+          </property>
+          <property
+                name="startupProgressRect"
+                value="5,275,445,15">
+          </property>
+       </product>
+    </extension>
+</plugin>

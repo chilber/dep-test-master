@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="dep-test-master" uid="neo-dep-test-master-application" id="neo-dep-test-master-product.neoMobileSuite" application="neo-dep-test-master-product.nmsapplication" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <vmArgs>-Dorg.eclipse.springextensionfactory.timeout=40000
+-Dfile.encoding=UTF-8
+-Xms512m
+-Xmx1024m
+-Xss128k
+-XX:MaxPermSize=192m
+-XX:NewSize=384m
+-XX:+UseParallelOldGC</vmArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+   </launcherArgs>
+
+   <windowImages/>
+
+   <splash
+      location="nms-sup-sap-erp-win-product" />
+   <launcher name="test">
+      <solaris/>
+      <win useIco="true">
+         <ico path="neo.ico"/>
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+      <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6</windows>
+   </vm>
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="org.eclipse.rcp"/>
+      <feature id="neo-dep-test-master-feature" version="1.0.0.qualifier"/>
+   </features>
+
+   <configurations>
+      <plugin id="nms-sup-sap-erp-win-product" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.osgi" autoStart="true" startLevel="-1" />
+      <plugin id="org.springframework.beans" autoStart="true" startLevel="3" />
+      <plugin id="org.springframework.core" autoStart="true" startLevel="3" />
+      <plugin id="org.springframework.osgi.core" autoStart="true" startLevel="0" />
+      <plugin id="org.springframework.osgi.extender" autoStart="true" startLevel="0" />
+      <plugin id="org.springframework.osgi.io" autoStart="true" startLevel="0" />
+      <plugin id="org.springframework.transaction" autoStart="true" startLevel="3" />
+   </configurations>
+
+</product>
